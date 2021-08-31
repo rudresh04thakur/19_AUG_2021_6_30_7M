@@ -25,5 +25,11 @@
   </div>
 </nav>
 <div class="container-fluid">
+  <div class="alert alert-{{massage['class']}} fade show" role="alert" *ngIf="massage['massage']!=undefined && massage['massage']!=''">
+    {{massage['massage']}}
+    <button type="button" (click)="closeAlert()" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <router-outlet></router-outlet>
 </div>
