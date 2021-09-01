@@ -46,8 +46,7 @@ export class RegisterComponent implements OnInit {
    
     this._ser.register(value).subscribe((res:any)=>{
       //console.log("response ",res);
-      let cssClass = res['error']!=null?'danger':'success'
-      this._ser.updateMassage({"massage":res['msg'],"class":cssClass});
+      this._ser.updateNotification(res);
     })
   }
 

@@ -25,9 +25,9 @@
   </div>
 </nav>
 <div class="container-fluid">
-  <div class="alert alert-{{massage['class']}} fade show" role="alert" *ngIf="massage['massage']!=undefined && massage['massage']!=''">
-    {{massage['massage']}}
-    <button type="button" (click)="closeAlert()" class="close" aria-label="Close">
+  <div [@fadeAnimation]="'in'" class="alert gb-alert alert-{{notification['class']}} fade show" role="alert" *ngIf="notification['massage']!=undefined && notification['massage']!=''">
+    {{notification['massage']}}
+    <button type="button" (click)="closeAlert()" class="close gb-btn" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs'; //redux
 
 
 const API_URL = "http://localhost:3000"
@@ -14,11 +14,12 @@ export class AllService {
   constructor(private _http:HttpClient) {}
 
   //custom observable and subject
-  private massage = new BehaviorSubject({'massage':'Welcome to angular site','class':'primary'})
-  currentMassage = this.massage.asObservable();
+  private notification = new BehaviorSubject({'massage':'Welcome to angular site','class':'primary'})
+  currentNotification = this.notification.asObservable(); //observable
 
-  updateMassage(m:any){
-    this.massage.next(m)
+  updateNotification(res:any){
+    let cssClass = res['error']!=null?'danger':'success'
+    this.notification.next({"massage":res['msg'],"class":cssClass})
   }
 
   public register(data:any){
@@ -28,6 +29,14 @@ export class AllService {
     // .pipe(map((res:any)=>{
     //   return res;
     // }))
+  }
+
+  public getUsers(){
+    return this._http.get(API_URL+'/users');
+  }
+
+  public deleteUser(id:any){
+    return this._http.delete(API_URL+'/users/'+id);
   }
 
 }
