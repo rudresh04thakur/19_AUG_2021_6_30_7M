@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this._ser.currentNotification.subscribe((notification)=>{
       this.notification = notification;
-      console.log(Object.keys(this.notification).length)
+      //console.log(Object.keys(this.notification).length)
       setTimeout(()=>{
         this.closeAlert()
         //this._ser.updateNotification({'massage':'','class':''});

@@ -14,12 +14,12 @@
                 <td>{{i+1}}</td>
                 <td>{{user['name']}}</td>
                 <td>{{user['email']}}</td>
-                <td>active</td>
+                <td>{{user?.['status']=='0'?'Active':'Inactive'}}</td>
                 <td>
-                    <a title="edit" class="btn btn-success">
+                    <a title="edit" [routerLink]="['','edit',user['_id']]" class="btn btn-success">
                         <i class="fa fa-pencil"></i>
                     </a>&nbsp;
-                    <a title="view" class="btn btn-primary">
+                    <a title="view" routerLink="/view/{{user['_id']}}" class="btn btn-primary">
                         <i class="fa fa-eye"></i>
                     </a>&nbsp;
                     <button title="delete" (click)="deleteUser(user['_id'])" class="btn btn-danger">

@@ -35,6 +35,14 @@ export class AllService {
     return this._http.get(API_URL+'/users');
   }
 
+  public getUserById(id:any){
+    return this._http.get(API_URL+'/users/'+id);
+  }
+
+  public updateUser(id:any,data:any){
+    return this._http.put(API_URL+'/users/'+id,data);
+  }
+
   public deleteUser(id:any){
     return this._http.delete(API_URL+'/users/'+id);
   }

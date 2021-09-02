@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-4 offset-4">
+        <form class="form" [formGroup]="editForm" (ngSubmit)="update(editForm.value)">
+            <h4 class="text-center">Edit Form</h4>
+            <hr>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" class="form-control" type="text" name="name" placeholder="First Last">
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.name.hasError('required') && (editForm.controls.name.touched || editForm.controls.name.dirty)">
+                    Name is required</div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.name.hasError('pattern') && (editForm.controls.name.touched || editForm.controls.name.dirty)">
+                    Invalid Name</div>
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input [formControl]="editForm.controls['email']" class="form-control" type="email" name="email"
+                    placeholder="email">
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.email.hasError('required') && (editForm.controls.email.touched || editForm.controls.email.dirty)">
+                    Email is required</div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.email.hasError('pattern') && (editForm.controls.email.touched || editForm.controls.email.dirty)">
+                    Invalid Email</div>
+
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+
+                <input [formControl]="editForm.controls['mobile']" class="form-control" type="text" name="mobile"
+                    placeholder="Mobile">
+
+
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.mobile.hasError('required') && (editForm.controls.mobile.touched || editForm.controls.mobile.dirty)">
+                    Mobile number is required</div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.mobile.hasError('pattern') && (editForm.controls.mobile.touched || editForm.controls.mobile.dirty)">
+                    Invalid Mobile number</div>
+
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <div class="input-group">
+                    <input [formControl]="editForm.controls['age']" class="form-control" type="text" name="age"
+                        placeholder="Age">
+
+                    <div class="input-group-append" (click)="togglePassword()">
+                        <div class="input-group-text">
+                            Year
+                            <!-- fa-eye-slash -->
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.age.hasError('required') && (editForm.controls.age.touched || editForm.controls.age.dirty)">
+                    Age is required</div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.age.hasError('pattern') && (editForm.controls.age.touched || editForm.controls.age.dirty)">
+                    Invalid Age</div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.age.hasError('max') && (editForm.controls.age.touched || editForm.controls.age.dirty)">
+                    Max age is 100</div>
+                
+                    <div class="alert alert-danger"
+                    *ngIf="editForm.controls.age.hasError('min') && (editForm.controls.age.touched || editForm.controls.age.dirty)">
+                    Min age is 1</div>
+
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select [formControl]="editForm.controls['status']" class="form-control" name="status">
+                    <option value="0">Active</option>
+                    <option value="1">Inactive</option>
+                </select>
+
+
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.status.hasError('required') && (editForm.controls.status.touched || editForm.controls.status.dirty)">
+                    Status is required</div>
+
+            </div>
+            <div class="form-group">
+                <label for="name">Password</label>
+                <div class="input-group">
+                    <input formControlName="password" #passwordInput class="form-control" type="password"
+                        name="password" placeholder="Password">
+                    <div class="input-group-append" (click)="togglePassword()">
+                        <div class="input-group-text">
+                            <i class="fa fa-eye"></i>
+                            <!-- fa-eye-slash -->
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.password.hasError('required') && (editForm.controls.password.touched || editForm.controls.password.dirty)">
+                    Password is required</div>
+                <div class="alert alert-danger"
+                    *ngIf="editForm.controls.password.hasError('pattern') && (editForm.controls.password.touched || editForm.controls.password.dirty)">
+                    Invalid Password</div>
+            </div>
+
+            <div class="float-right">
+                <button class="btn btn-danger" type="reset">Cancel</button> &nbsp;
+                <button class="btn btn-success" type="submit">Update</button>
+
+            </div>
+        </form>
+    </div>
+</div>
