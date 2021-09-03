@@ -47,4 +47,8 @@ export class AllService {
     return this._http.delete(API_URL+'/users/'+id);
   }
 
+  public login(data:any){
+    return this._http.post(API_URL+'/users/login',data);
+  }
+
 }
